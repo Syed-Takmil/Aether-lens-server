@@ -83,7 +83,7 @@ app.post('/api/suppliers/add', async (req: Request, res: Response): Promise<void
 
 app.delete('/api/suppliers/:id', async (req: Request, res: Response): Promise<void> => {
   try {
-    await db.collection('suppliers').deleteOne({ _id: new ObjectId(req.params.id) });
+    await db.collection('suppliers').deleteOne({ _id: new ObjectId(req.params.id as string) });
     res.status(200).json({ success: true, message: 'Supplier records purged successfully.' });
   } catch (error: any) {
     res.status(400).json({ success: false, error: error.message });
